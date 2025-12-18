@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ARG-distributor</title>
+    <title>IN Cheques - ARG Distributor</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/in-cheques.css">
 </head>
 
 <body>
@@ -27,19 +25,19 @@
 
         <nav class="sidebar-nav">
             <div class="nav-item">
-                <a href="dashboard.html" class="nav-link active">
+                <a href="dashboard.html" class="nav-link">
                     <i class="nav-icon fas fa-home"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </div>
-            <div class="nav-item">
+            <div class="nav-item expanded">
                 <a href="#" class="nav-link" id="chequeOpsToggle">
                     <i class="nav-icon fas fa-file-invoice"></i>
                     <span class="nav-text">Cheque Operations</span>
                     <i class="nav-arrow fas fa-chevron-down"></i>
                 </a>
                 <div class="submenu" id="chequeOpsSubmenu">
-                    <a href="in-cheques.html" class="submenu-link">
+                    <a href="in-cheques.html" class="submenu-link active">
                         <i class="submenu-icon fas fa-arrow-down"></i>
                         <span class="submenu-text">IN Cheques</span>
                     </a>
@@ -132,44 +130,37 @@
 
             <div class="header-right">
                 <span class="welcome-text">Welcome, Admin</span>
-                <button class="logout-btn" onclick="window.location.href='login.html'">
+                <button class="logout-btn" onclick="window.location.href='index.html'">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </div>
         </header>
 
-        <!-- Dashboard Content -->
-        <div class="dashboard-content">
+        <!-- Page Content -->
+        <div class="page-content">
             <!-- Page Header -->
-            <div class="page-header">
-                <h1>Dashboard</h1>
-                <p class="page-subtitle">Overview of your cheque management system</p>
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">IN Cheques</h1>
+                    <p class="page-description">Manage your in cheques</p>
+                </div>
+                <button class="btn-primary" id="addChequeBtn">
+                    <i class="fas fa-plus"></i>
+                    Add New Cheque
+                </button>
             </div>
 
             <!-- Stats Cards -->
-            <div class="stats-grid">
+            <div class="stats-grid-2">
                 <div class="stat-card green">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-number">8</div>
+                            <div class="stat-number">9</div>
                             <div class="stat-label">IN HAND</div>
-                            <div class="stat-amount">LKR 424,678.00</div>
+                            <div class="stat-amount">LKR 429,678.00</div>
                         </div>
                         <div class="stat-icon-lg green">
-                            <i class="fas fa-file-invoice"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="stat-card orange">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number">60</div>
-                            <div class="stat-label">SENT OUT</div>
-                            <div class="stat-amount">LKR 12,018,937.00</div>
-                        </div>
-                        <div class="stat-icon-lg orange">
-                            <i class="fas fa-paper-plane"></i>
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
                     </div>
                 </div>
@@ -177,176 +168,129 @@
                 <div class="stat-card cyan">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-number">0</div>
+                            <div class="stat-number">1</div>
                             <div class="stat-label">TO DEPOSIT (TODAY)</div>
-                            <div class="stat-amount">LKR 0.00</div>
+                            <div class="stat-amount">LKR 5,000.00</div>
                         </div>
                         <div class="stat-icon-lg cyan">
                             <i class="fas fa-university"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="stat-card blue">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">COMING TO OUR BANK (TODAY)</div>
-                            <div class="stat-amount">LKR 0.00</div>
-                        </div>
-                        <div class="stat-icon-lg blue">
-                            <i class="fas fa-building"></i>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Schedule Section -->
-            <div class="schedule-section">
-                <div class="schedule-card">
-                    <div class="schedule-header">
-                        <h2>Today's Banking Schedule</h2>
-                    </div>
-                    <div class="schedule-body">
-                        <div class="schedule-empty">
-                            <i class="fas fa-calendar-times"></i>
-                            <span>No cheques scheduled for banking today</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content Grid -->
-            <div class="content-grid">
-                <!-- OUT Cheque Trends -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <h3 class="card-title">OUT Cheque Value Trends (Next 30 Days)</h3>
-                        <p class="card-subtitle">Expected daily OUT cheque values for the next month</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="outChequeChart"></canvas>
+            <!-- Table Section -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h2 class="table-title">
+                        <span class="title-accent"></span>
+                        IN Cheques List
+                    </h2>
+                    <div class="table-actions">
+                        <button class="btn-icon btn-filter">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                        <button class="btn-icon btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <div class="show-entries">
+                            <label>Show:</label>
+                            <select class="entries-select">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <!-- IN Returned Analysis -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <h3 class="card-title">IN Returned Analysis (Last 12 Months)</h3>
-                        <p class="card-subtitle">IN cheques returned by month and amount</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="inReturnedChart"></canvas>
-                        </div>
-                    </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-col">
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>CHEQUE DATE</th>
+                                <th>CHEQUE</th>
+                                <th>BANK</th>
+                                <th>AMOUNT</th>
+                                <th>PAYEE</th>
+                                <th>PAYER</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>16-10-2025</td>
+                                <td>323423</td>
+                                <td>
+                                    <div class="bank-info">
+                                        <div class="bank-name">Commercial Bank of Ceylon</div>
+                                        <div class="branch-name">Branch: 118</div>
+                                    </div>
+                                </td>
+                                <td>LKR 5,000.00</td>
+                                <td>Amal Perara</td>
+                                <td>ABC Company</td>
+                                <td><span class="badge badge-received">RECEIVED</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>14-10-2025</td>
+                                <td>211321</td>
+                                <td>
+                                    <div class="bank-info">
+                                        <div class="bank-name">Bank of Ceylon</div>
+                                        <div class="branch-name">Branch: 002</div>
+                                    </div>
+                                </td>
+                                <td>LKR 5,000.00</td>
+                                <td>Saman</td>
+                                <td></td>
+                                <td><span class="badge badge-received">RECEIVED</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // OUT Cheque Trends Chart
-        const outCtx = document.getElementById('outChequeChart').getContext('2d');
-        const outChequeChart = new Chart(outCtx, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: 30}, (_, i) => `Day ${i + 1}`),
-                datasets: [{
-                    label: 'OUT Cheque Value',
-                    data: Array.from({length: 30}, () => Math.floor(Math.random() * 500000) + 100000),
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 3,
-                    pointHoverRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return 'LKR ' + context.parsed.y.toLocaleString();
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#f3f4f6'
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return 'LKR ' + (value / 1000) + 'K';
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 10
-                        }
-                    }
-                }
-            }
-        });
-
-        // IN Returned Analysis Chart
-        const inCtx = document.getElementById('inReturnedChart').getContext('2d');
-        const inReturnedChart = new Chart(inCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'Returned Cheques',
-                    data: [12, 8, 15, 10, 6, 14, 9, 11, 7, 13, 5, 10],
-                    backgroundColor: '#17a2b8',
-                    borderColor: '#17a2b8',
-                    borderWidth: 1,
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#f3f4f6'
-                        },
-                        ticks: {
-                            stepSize: 5
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    }
-                }
-            }
-        });
-
         // Sidebar Toggle
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
@@ -405,7 +349,22 @@
             bankItem.classList.toggle('expanded');
         });
 
-        console.log('Pixzar Cheques Dashboard loaded successfully!');
+        // Select All Checkbox
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+        selectAllCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        // Add New Cheque Button
+        document.getElementById('addChequeBtn').addEventListener('click', () => {
+            alert('Add New Cheque form will open here');
+        });
+
+        console.log('IN Cheques page loaded successfully!');
     </script>
 </body>
 

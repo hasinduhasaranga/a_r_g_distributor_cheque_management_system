@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Out Cheques - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/in-cheques.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span>A R G Distributor pvt LTD</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item expanded">
+                <a href="#" class="nav-link" id="chequeOpsToggle">
+                    <i class="nav-icon fas fa-file-invoice"></i>
+                    <span class="nav-text">Cheque Operations</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="chequeOpsSubmenu">
+                    <a href="in-cheques.html" class="submenu-link ">
+                        <i class="submenu-icon fas fa-arrow-down"></i>
+                        <span class="submenu-text">IN Cheques</span>
+                    </a>
+                    <a href="out-cheques.html" class="submenu-link active">
+                        <i class="submenu-icon fas fa-arrow-up"></i>
+                        <span class="submenu-text">OUT Cheques</span>
+                    </a>
+                    <a href="add-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-plus"></i>
+                        <span class="submenu-text">Add Cheque</span>
+                    </a>
+                    <a href="print-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-print"></i>
+                        <span class="submenu-text">Print Cheque</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="scheduleToggle">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <span class="nav-text">Schedule & Tracking</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="scheduleSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-calendar-day"></i>
+                        <span class="submenu-text">Daily Schedule</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-receipt"></i>
+                        <span class="submenu-text">Expected Receipts</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-users"></i>
+                        <span class="submenu-text">Third Party Transfers</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-bar"></i>
+                    <span class="nav-text">Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="bankToggle">
+                    <i class="nav-icon fas fa-university"></i>
+                    <span class="nav-text">Bank Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="bankSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-building"></i>
+                        <span class="submenu-text">Banks</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-code-branch"></i>
+                        <span class="submenu-text">Bank Branches</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <span class="nav-text">User Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-circle"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Admin</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">OUT Cheques</h1>
+                    <p class="page-description">Manage your out cheques</p>
+                </div>
+                <button class="btn-primary" id="addChequeBtn">
+                    <i class="fas fa-plus"></i>
+                    Add New Cheque
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid-2">
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">60</div>
+                            <div class="stat-label">SENT OUT</div>
+                            <div class="stat-amount">LKR 429,678.00</div>
+                        </div>
+                        <div class="stat-icon-lg green">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card cyan">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">OUT CHEQUES COMING (TODAY)</div>
+                            <div class="stat-amount">LKR 5,000.00</div>
+                        </div>
+                        <div class="stat-icon-lg cyan">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h2 class="table-title">
+                        <span class="title-accent"></span>
+                        OUT Cheques List
+                    </h2>
+                    <div class="table-actions">
+                        <button class="btn-icon btn-filter">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                        <button class="btn-icon btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <div class="show-entries">
+                            <label>Show:</label>
+                            <select class="entries-select">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-col">
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>CHEQUE DATE</th>
+                                <th>CHEQUE</th>
+                                <th>BANK</th>
+                                <th>AMOUNT</th>
+                                <th>PAYEE</th>
+                                <th>PAYER</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>16-10-2025</td>
+                                <td>323423</td>
+                                <td>
+                                    <div class="bank-info">
+                                        <div class="bank-name">Commercial Bank of Ceylon</div>
+                                        <div class="branch-name">Branch: 118</div>
+                                    </div>
+                                </td>
+                                <td>LKR 5,000.00</td>
+                                <td>Amal Perara</td>
+                                <td>ABC Company</td>
+                                <td><span class="badge badge-received">RECEIVED</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>14-10-2025</td>
+                                <td>211321</td>
+                                <td>
+                                    <div class="bank-info">
+                                        <div class="bank-name">Bank of Ceylon</div>
+                                        <div class="branch-name">Branch: 002</div>
+                                    </div>
+                                </td>
+                                <td>LKR 5,000.00</td>
+                                <td>Saman</td>
+                                <td></td>
+                                <td><span class="badge badge-received">RECEIVED</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+        });
+
+        // Submenu Toggle
+        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
+        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+
+        const scheduleToggle = document.getElementById('scheduleToggle');
+        const scheduleItem = scheduleToggle.closest('.nav-item');
+
+        const bankToggle = document.getElementById('bankToggle');
+        const bankItem = bankToggle.closest('.nav-item');
+
+        chequeOpsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            chequeOpsItem.classList.toggle('expanded');
+        });
+
+        scheduleToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            scheduleItem.classList.toggle('expanded');
+        });
+
+        bankToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            bankItem.classList.toggle('expanded');
+        });
+
+        // Mobile Sidebar Toggle
+        if (window.innerWidth <= 768) {
+            sidebarToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sidebar.classList.toggle('show');
+            });
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (e) => {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            });
+        }
+
+        // Select All Checkbox
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+        selectAllCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        // Add New Cheque Button
+        document.getElementById('addChequeBtn').addEventListener('click', () => {
+            alert('Add New Cheque form will open here');
+        });
+
+        console.log('IN Cheques page loaded successfully!');
+    </script>
+</body>
+
+</html>

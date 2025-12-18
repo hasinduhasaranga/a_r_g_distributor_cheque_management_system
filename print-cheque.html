@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Cheque - Manual Entry - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/print-cheque.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span>A R G Distributor pvt LTD</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item expanded">
+                <a href="#" class="nav-link" id="chequeOpsToggle">
+                    <i class="nav-icon fas fa-file-invoice"></i>
+                    <span class="nav-text">Cheque Operations</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="chequeOpsSubmenu">
+                    <a href="in-cheques.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-down"></i>
+                        <span class="submenu-text">IN Cheques</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-up"></i>
+                        <span class="submenu-text">OUT Cheques</span>
+                    </a>
+                    <a href="add-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-plus"></i>
+                        <span class="submenu-text">Add Cheque</span>
+                    </a>
+                    <a href="print-cheque.html" class="submenu-link active">
+                        <i class="submenu-icon fas fa-print"></i>
+                        <span class="submenu-text">Print Cheque</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="scheduleToggle">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <span class="nav-text">Schedule & Tracking</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="scheduleSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-calendar-day"></i>
+                        <span class="submenu-text">Daily Schedule</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-receipt"></i>
+                        <span class="submenu-text">Expected Receipts</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-users"></i>
+                        <span class="submenu-text">Third Party Transfers</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-bar"></i>
+                    <span class="nav-text">Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="bankToggle">
+                    <i class="nav-icon fas fa-university"></i>
+                    <span class="nav-text">Bank Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="bankSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-building"></i>
+                        <span class="submenu-text">Banks</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-code-branch"></i>
+                        <span class="submenu-text">Bank Branches</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <span class="nav-text">User Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-circle"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Admin</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">Print Cheque - Manual Entry</h1>
+                    <p class="page-description">Enter cheque details manually and print</p>
+                </div>
+                <div>
+                    <button class="btn-back" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+
+            <!-- Print Form Section -->
+            <div class="print-form-section">
+                <div class="print-header">
+                    <i class="fas fa-print"></i>
+                    <div>
+                        <h2>Manual Cheque Printing</h2>
+                        <p>Enter cheque details and arrange them for printing</p>
+                    </div>
+                </div>
+
+                <form id="printChequeForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-calendar"></i>
+                                Cheque Date <span class="required">*</span>
+                            </label>
+                            <input type="date" class="form-control" id="chequeDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-user"></i>
+                                Payee Name <span class="required">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="payeeName" placeholder="Enter payee name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-money-bill"></i>
+                                Amount (LKR) <span class="required">*</span>
+                            </label>
+                            <input type="number" class="form-control" id="amount" placeholder="0.00" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-section">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="crossCheque">
+                            <span class="checkmark"></span>
+                            <div class="checkbox-label">
+                                <i class="fas fa-ban"></i>
+                                Cross Cheque (Account Payee Only)
+                            </div>
+                        </label>
+                        <p class="checkbox-help">Check this box to print "Account Payee Only" on the cheque</p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-arrows-alt-v"></i>
+                                Amount in Words Line Gap (px)
+                            </label>
+                            <input type="number" class="form-control" id="lineGap" value="12" min="0" max="20">
+                            <p class="field-help">Line spacing (0-20px)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-text-width"></i>
+                                Words Per Line
+                            </label>
+                            <input type="number" class="form-control" id="wordsPerLine" value="7" min="3" max="15">
+                            <p class="field-help">Words per line (3-15)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-text-height"></i>
+                                Font Size (px)
+                            </label>
+                            <input type="number" class="form-control" id="fontSize" value="14" min="8" max="24">
+                            <p class="field-help">Font size (8-24px)</p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-preview">
+                            <i class="fas fa-eye"></i>
+                            Preview Cheque
+                        </button>
+                        <button type="button" class="btn-clear" id="clearFormBtn">
+                            <i class="fas fa-eraser"></i>
+                            Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Submenu Toggle
+        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
+        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+
+        const scheduleToggle = document.getElementById('scheduleToggle');
+        const scheduleItem = scheduleToggle.closest('.nav-item');
+
+        const bankToggle = document.getElementById('bankToggle');
+        const bankItem = bankToggle.closest('.nav-item');
+
+        chequeOpsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            chequeOpsItem.classList.toggle('expanded');
+        });
+
+        scheduleToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            scheduleItem.classList.toggle('expanded');
+        });
+
+        bankToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            bankItem.classList.toggle('expanded');
+        });
+
+        // Number to Words Conversion
+        function numberToWords(num) {
+            const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+            const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+            const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+
+            if (num === 0) return 'Zero';
+
+            function convertHundreds(n) {
+                let str = '';
+                if (n > 99) {
+                    str += ones[Math.floor(n / 100)] + ' Hundred ';
+                    n %= 100;
+                }
+                if (n > 19) {
+                    str += tens[Math.floor(n / 10)] + ' ';
+                    n %= 10;
+                }
+                if (n > 9) {
+                    str += teens[n - 10] + ' ';
+                    return str;
+                }
+                if (n > 0) {
+                    str += ones[n] + ' ';
+                }
+                return str;
+            }
+
+            let word = '';
+            if (num >= 1000000) {
+                word += convertHundreds(Math.floor(num / 1000000)) + 'Million ';
+                num %= 1000000;
+            }
+            if (num >= 1000) {
+                word += convertHundreds(Math.floor(num / 1000)) + 'Thousand ';
+                num %= 1000;
+            }
+            word += convertHundreds(num);
+
+            return word.trim();
+        }
+
+        // Form submission
+        const form = document.getElementById('printChequeForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const chequeDate = document.getElementById('chequeDate').value;
+            const payeeName = document.getElementById('payeeName').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const crossCheque = document.getElementById('crossCheque').checked;
+            const lineGap = document.getElementById('lineGap').value;
+            const wordsPerLine = document.getElementById('wordsPerLine').value;
+            const fontSize = document.getElementById('fontSize').value;
+
+            if (!chequeDate || !payeeName || !amount) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            const amountInWords = numberToWords(Math.floor(amount)) + ' Rupees';
+            
+            const chequeData = {
+                date: chequeDate,
+                payee: payeeName,
+                amount: amount,
+                amountWords: amountInWords,
+                crossCheque: crossCheque,
+                lineGap: lineGap,
+                wordsPerLine: wordsPerLine,
+                fontSize: fontSize
+            };
+
+            console.log('Cheque Preview Data:', chequeData);
+            alert('Preview functionality will be implemented here.\n\nCheque Details:\nPayee: ' + payeeName + '\nAmount: LKR ' + amount.toFixed(2) + '\nIn Words: ' + amountInWords);
+        });
+
+        // Clear form
+        const clearBtn = document.getElementById('clearFormBtn');
+        clearBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear the form?')) {
+                form.reset();
+                document.getElementById('lineGap').value = '12';
+                document.getElementById('wordsPerLine').value = '7';
+                document.getElementById('fontSize').value = '14';
+            }
+        });
+
+        console.log('Print Cheque page loaded successfully!');
+    </script>
+</body>
+
+</html>

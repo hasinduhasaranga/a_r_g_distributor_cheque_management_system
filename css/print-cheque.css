@@ -1,0 +1,394 @@
+/* Print Cheque Page Styles */
+.page-content{
+    padding: 2rem;
+    
+}
+
+.page-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 8px 0;
+}
+
+.page-description {
+    font-size: 16px;
+    color: #718096;
+    margin: 0;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #e5e7eb;
+    color: #374151;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.btn-back:hover {
+    background: #d1d5db;
+}
+
+/* Print Form Section */
+.print-form-section {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.print-header {
+    background: #022527;
+    color: #ffffff;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.print-header i {
+    font-size: 36px;
+}
+
+.print-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.print-header p {
+    font-size: 15px;
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* Form Layout */
+form {
+    padding: 40px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.form-label i {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+.form-control {
+    padding: 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control::placeholder {
+    color: #9ca3af;
+}
+
+input[type="number"].form-control {
+    -moz-appearance: textfield;
+}
+
+input[type="number"].form-control::-webkit-inner-spin-button,
+input[type="number"].form-control::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="date"].form-control {
+    position: relative;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.field-help {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 4px 0 0 0;
+}
+
+/* Checkbox Section */
+.checkbox-section {
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: #2563eb;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.checkbox-label i {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.checkbox-help {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 8px 0 0 32px;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.btn-preview,
+.btn-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.btn-preview {
+    background: #022527;
+    color: #ffffff;
+}
+
+.btn-preview:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-preview:active {
+    transform: translateY(0);
+}
+
+.btn-clear {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.btn-clear:hover {
+    background: #d1d5db;
+}
+
+.btn-clear:active {
+    transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header-section {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .btn-back {
+        align-self: flex-start;
+    }
+
+    .print-header {
+        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .print-header i {
+        font-size: 28px;
+    }
+
+    .print-header h2 {
+        font-size: 22px;
+    }
+
+    .print-header p {
+        font-size: 14px;
+    }
+
+    form {
+        padding: 24px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .page-description {
+        font-size: 14px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-preview,
+    .btn-clear {
+        width: 100%;
+    }
+
+    .checkbox-help {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .print-header {
+        padding: 20px;
+    }
+
+    .print-header h2 {
+        font-size: 20px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .form-label {
+        font-size: 13px;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .checkbox-section {
+        padding: 16px;
+    }
+}
