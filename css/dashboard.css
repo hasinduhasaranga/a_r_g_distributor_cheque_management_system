@@ -152,6 +152,61 @@ body {
     transform: rotate(180deg);
 }
 
+/* ===== SUBMENU ===== */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 0.25rem;
+}
+
+.nav-item.expanded .submenu {
+    max-height: 300px;
+}
+
+.sidebar.collapsed .submenu {
+    display: none;
+}
+
+.submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.submenu-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    padding-left: 2.75rem;
+}
+
+.submenu-link:first-child {
+    padding-top: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.submenu-link:last-child {
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.submenu-icon {
+    width: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.submenu-text {
+    font-weight: 400;
+}
+
 /* ===== MAIN CONTENT ===== */
 .main-content {
     margin-left: 250px;

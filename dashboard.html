@@ -37,18 +37,50 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="chequeOpsToggle">
                     <i class="nav-icon fas fa-file-invoice"></i>
                     <span class="nav-text">Cheque Operations</span>
                     <i class="nav-arrow fas fa-chevron-down"></i>
                 </a>
+                <div class="submenu" id="chequeOpsSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-down"></i>
+                        <span class="submenu-text">IN Cheques</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-up"></i>
+                        <span class="submenu-text">OUT Cheques</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-plus"></i>
+                        <span class="submenu-text">Add Cheque</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-print"></i>
+                        <span class="submenu-text">Print Cheque</span>
+                    </a>
+                </div>
             </div>
             <div class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="scheduleToggle">
                     <i class="nav-icon fas fa-calendar-alt"></i>
                     <span class="nav-text">Schedule & Tracking</span>
                     <i class="nav-arrow fas fa-chevron-down"></i>
                 </a>
+                <div class="submenu" id="scheduleSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-calendar-day"></i>
+                        <span class="submenu-text">Daily Schedule</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-receipt"></i>
+                        <span class="submenu-text">Expected Receipts</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-users"></i>
+                        <span class="submenu-text">Third Party Transfers</span>
+                    </a>
+                </div>
             </div>
             <div class="nav-item">
                 <a href="#" class="nav-link">
@@ -57,11 +89,21 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="bankToggle">
                     <i class="nav-icon fas fa-university"></i>
                     <span class="nav-text">Bank Management</span>
                     <i class="nav-arrow fas fa-chevron-down"></i>
                 </a>
+                <div class="submenu" id="bankSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-building"></i>
+                        <span class="submenu-text">Banks</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-code-branch"></i>
+                        <span class="submenu-text">Bank Branches</span>
+                    </a>
+                </div>
             </div>
             <div class="nav-item">
                 <a href="#" class="nav-link">
@@ -317,6 +359,31 @@
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
             mainContent.classList.toggle('expanded');
+        });
+
+        // Submenu Toggle
+        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
+        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+
+        const scheduleToggle = document.getElementById('scheduleToggle');
+        const scheduleItem = scheduleToggle.closest('.nav-item');
+
+        const bankToggle = document.getElementById('bankToggle');
+        const bankItem = bankToggle.closest('.nav-item');
+
+        chequeOpsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            chequeOpsItem.classList.toggle('expanded');
+        });
+
+        scheduleToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            scheduleItem.classList.toggle('expanded');
+        });
+
+        bankToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            bankItem.classList.toggle('expanded');
         });
 
         // Mobile Sidebar Toggle
