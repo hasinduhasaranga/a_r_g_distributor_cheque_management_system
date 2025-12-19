@@ -301,6 +301,322 @@ input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
     transform: scale(0.98);
 }
 
+/* --- Cheque Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 95%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    border-radius: 16px 16px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #022527;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #ef4444;
+}
+
+.modal-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F0F2F5; /* Neutral background to highlight cheque */
+}
+
+/* Virtual Cheque */
+.virtual-cheque {
+    width: 800px;
+    height: 380px; /* Standard approx cheque proportion */
+    background: white;
+    position: relative;
+    border: 1px solid #d1d5db; /* Subtle border for preview */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(#e6f2ff 1px, transparent 1px), linear-gradient(90deg, #e6f2ff 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Watermark/Cheque Background effect */
+.virtual-cheque::before {
+    content: "ARG CHEQUE";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Crossing */
+.crossing {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 80px;
+    display: none; /* Toggled by JS */
+    z-index: 10;
+}
+
+.crossing.show {
+    display: block;
+}
+
+.crossing::before, .crossing::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    left: 0;
+    transform: rotate(-35deg);
+}
+
+.crossing::before { top: 30px; }
+.crossing::after { top: 50px; }
+
+.crossing-text {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    transform: rotate(-35deg);
+    font-size: 11px;
+    font-weight: 900;
+    width: 100px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+}
+
+/* Bank Info (Static) */
+.cheque-bank-info {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Adjust if crossing exists */
+    font-size: 12px;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 5;
+}
+
+/* Date */
+.cheque-date {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'Courier New', monospace; /* Monospace for alignment */
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    border: 1px solid transparent; /* Container box if needed */
+}
+
+/* Payee */
+.cheque-payee-row {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    align-items: baseline;
+    font-size: 16px;
+}
+
+.cheque-payee-label {
+    margin-right: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.cheque-payee-name {
+    flex-grow: 1;
+    border-bottom: 2px solid #000; /* Actually no, standard cheques just have the text */
+    /* Wait, usually it's "Pay [Name]................" */
+    font-weight: 700;
+    padding-left: 10px;
+    font-size: 18px; /* Slightly larger */
+}
+
+/* Amount Words */
+.cheque-amount-words-row {
+    position: absolute;
+    top: 150px;
+    left: 40px;
+    right: 250px; /* Space for amount figures */
+}
+
+.cheque-amount-words-label {
+    font-weight: 700;
+    margin-right: 10px;
+    float: left;
+    margin-bottom: 20px; /* Push first line slightly */
+}
+
+.cheque-amount-words {
+    font-weight: 500;
+    line-height: var(--line-gap, 30px); /* Custom property or default */
+    text-transform: capitalize;
+    /* This style will need to be flexible for multi-line */
+}
+
+/* Amount Figures */
+.cheque-amount-figures-box {
+    position: absolute;
+    top: 150px;
+    right: 30px;
+    width: 200px;
+    height: 50px;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    background: linear-gradient(to right, #ddd 1px, transparent 1px) 0 0 / 100% 100% no-repeat; /* Subtle background */
+    background: #eef2f7; /* Box BG */
+}
+
+.cheque-currency {
+    font-weight: 900;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.cheque-amount-figures {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Signature (Mock) */
+.cheque-signature-area {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    width: 250px;
+    text-align: center;
+    border-top: 1px dotted #999;
+}
+
+.cheque-footer-micr {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier New', monospace; /* Approximate MICR font */
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #333;
+}
+
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    background: #f8fafc;
+    border-radius: 0 0 16px 16px;
+}
+
+.btn-modal-cancel {
+    padding: 10px 24px;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #64748b;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-modal-cancel:hover {
+    background: #f1f5f9;
+}
+
+.btn-print-confirm {
+    padding: 10px 24px;
+    border: none;
+    background: #022527;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(2, 37, 39, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-print-confirm:hover {
+    background: #17a2b8; /* Highlight */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .page-header-section {
@@ -390,5 +706,63 @@ input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
 
     .checkbox-section {
         padding: 16px;
+    }
+}
+
+/* === PRINT STYLES === */
+/* === PRINT STYLES === */
+@media print {
+    /* Hide everything on the page */
+    body * {
+        visibility: hidden;
+    }
+    
+    /* Explicitly hide non-printable structural elements to avoid spacing issues */
+    #sidebar, 
+    #sidebar-placeholder, 
+    .header, 
+    .page-content,
+    .modal-header,
+    .modal-footer {
+        display: none !important;
+    }
+
+    /* Make the Modal Overlay Visible (container) */
+    .modal-overlay, 
+    .modal-content, 
+    .modal-body {
+        visibility: visible !important;
+        position: static !important;
+        background: none !important;
+        width: auto !important;
+        height: auto !important;
+        transform: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    /* Target the Virtual Cheque */
+    .virtual-cheque, 
+    .virtual-cheque * {
+        visibility: visible !important;
+    }
+
+    .virtual-cheque {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important; /* Keep border for reference */
+    }
+    
+    /* Ensure colors print exactly as seen */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 }
