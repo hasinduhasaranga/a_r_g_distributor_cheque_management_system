@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - ARG Distributor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/in-cheques.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+    <!-- Sidebar -->
+   <div id="sidebar-placeholder"></div>
+
+<script src="js/common.js"></script>
+
+    <div class="main-content" id="mainContent">
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+                <div class="header-logo"><span>A R G Distributor pvt LTD</span></div>
+            </div>
+            <div class="header-right"><span class="welcome-text">Welcome, Admin</span></div>
+        </header>
+
+        <div class="page-content report-page">
+            <div class="page-header-section">
+                <div>
+                    <h1 class="page-title">Reports & Analytics</h1>
+                    <p class="page-description">Comprehensive analysis of your cheque data</p>
+                </div>
+                <button class="btn-download-report"><i class="fas fa-file-pdf"></i></button>
+            </div>
+
+            <div class="filter-card card">
+                <h3><i class="fas fa-calendar-alt"></i> Select Date Range</h3>
+                <p>Choose a date range to generate comprehensive reports and analytics</p>
+                <div class="filter-row">
+                    <div class="input-group">
+                        <label><i class="fas fa-calendar"></i> Start Date</label>
+                        <input type="date" value="2025-10-01" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-calendar"></i> End Date</label>
+                        <input type="date" value="2025-10-16" class="form-control">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-exchange-alt"></i> Direction</label>
+                        <select class="form-control">
+                            <option>All Cheques</option>
+                            <option>IN Cheques</option>
+                            <option>OUT Cheques</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn-primary"><i class="fas fa-filter"></i> Apply Filter</button>
+                    <button class="btn-dark">This Month</button>
+                    <button class="btn-outline"><i class="fas fa-chevron-left"></i> Last Month</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card cyan">
+                    <div class="stat-header">
+                        <div><div class="stat-number">45</div><div class="stat-label">TOTAL CHEQUES</div></div>
+                        <i class="fas fa-file-alt stat-icon-faint"></i>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div><div class="stat-number">LKR 6,226,706.00</div><div class="stat-label">TOTAL AMOUNT</div></div>
+                        <i class="fas fa-money-bill-wave stat-icon-faint"></i>
+                    </div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-header">
+                        <div><div class="stat-number">LKR 138,371.24</div><div class="stat-label">AVERAGE AMOUNT</div></div>
+                        <i class="fas fa-calculator stat-icon-faint"></i>
+                    </div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-header">
+                        <div><div class="stat-number">3</div><div class="stat-label">IN CHEQUE RETURNED</div></div>
+                        <i class="fas fa-undo stat-icon-faint"></i>
+                    </div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-header">
+                        <div><div class="stat-number">LKR 59,000.00</div><div class="stat-label">RETURNED AMOUNT</div></div>
+                        <i class="fas fa-hand-holding-usd stat-icon-faint"></i>
+                    </div>
+                </div>
+                <div class="stat-card purple clickable-stat" id="viewReturnedPayers">
+                    <div class="stat-header">
+                        <div><div class="stat-number">2</div><div class="stat-label">RETURNING PAYERS COUNT</div></div>
+                        <i class="fas fa-users-slash stat-icon-faint"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-grid-2">
+                <div class="card chart-card">
+                    <div class="card-header"><h4>Status Distribution</h4><p>Breakdown by cheque status</p></div>
+                    <div class="chart-container"><canvas id="statusChart"></canvas></div>
+                </div>
+                <div class="card-split">
+                    <div class="card breakdown-card">
+                        <div class="card-header"><h4>Type Breakdown</h4></div>
+                        <div class="breakdown-list" id="typeBreakdown"></div>
+                    </div>
+                    <div class="card breakdown-card">
+                        <div class="card-header"><h4>Bank Breakdown</h4></div>
+                        <div class="breakdown-list" id="bankBreakdown"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-section card">
+                <div class="card-header"><h4>Detailed Status Breakdown</h4></div>
+                <div class="table-container">
+                    <table class="data-table" id="statusTable">
+                        <thead>
+                            <tr>
+                                <th>STATUS</th><th>COUNT</th><th>PERCENTAGE</th>
+                                <th>TOTAL AMOUNT</th><th>PERCENTAGE OF TOTAL</th><th>AVERAGE AMOUNT</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot><tr id="tableTotalRow"></tr></tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div id="returnedPayersModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-users"></i> Returned Payers Details</h3>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payer-info-card">
+                            <div class="payer-header">
+                                <span><i class="fas fa-user"></i> Nayanajith</span>
+                                <span class="cheque-count">1 cheque</span>
+                            </div>
+                            <div class="payer-total">Total Amount: <span class="amt-red">LKR 23,000</span></div>
+                            <table class="modal-table">
+                                <thead>
+                                    <tr><th>CHEQUE #</th><th>DATE</th><th>BANK</th><th>AMOUNT</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>121231</td><td>05/10/2025</td><td>Commercial Bank of Ceylon</td><td>LKR 23000.00</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/reports.js"></script>
+</body>
+</html>
