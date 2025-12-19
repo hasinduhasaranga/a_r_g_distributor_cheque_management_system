@@ -1,0 +1,630 @@
+/* Bank Branches Page Styles */
+.page-content{
+    padding: 2rem;
+    
+}
+
+.page-header-section {
+    margin-bottom: 30px;
+}
+
+.page-header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.page-icon {
+    font-size: 40px;
+    color: #374151;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 4px 0;
+}
+
+.page-description {
+    font-size: 16px;
+    color: #718096;
+    margin: 0;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #0891b2;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 8px 0;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.stat-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f9ff;
+    border-radius: 12px;
+}
+
+.stat-icon i {
+    font-size: 32px;
+    color: #0891b2;
+}
+
+/* Add Branch Section */
+.add-branch-section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #0891b2;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.section-header i {
+    font-size: 24px;
+    color: #0891b2;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0;
+}
+
+/* Form Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.form-label i {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+.form-control {
+    padding: 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control::placeholder {
+    color: #9ca3af;
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+.btn-add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: #022527;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.btn-add:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+/* Branches List Section */
+.branches-list-section {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #0891b2;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-title i {
+    font-size: 22px;
+    color: #0891b2;
+}
+
+.list-title h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0;
+}
+
+.list-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.show-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+}
+
+.show-label i {
+    font-size: 16px;
+    color: #022527;
+}
+
+.show-select {
+    padding: 8px 32px 8px 16px;
+    border: 1.5px solid #022527;
+    border-radius: 20px;
+    background: #022527;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.show-select:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.show-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Search Section */
+.search-section {
+    padding: 24px 30px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.search-header i {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+.search-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+}
+
+.search-bar {
+    display: flex;
+    gap: 12px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #022527;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-input::placeholder {
+    color: #9ca3af;
+}
+
+.btn-search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: #022527;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    white-space: nowrap;
+}
+
+.btn-search:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-search:active {
+    transform: translateY(0);
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background: #f9fafb;
+}
+
+.data-table thead th {
+    padding: 16px 30px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.data-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.data-table tbody td {
+    padding: 16px 30px;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* Branch Code Badge */
+.branch-code {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Status Badge */
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.badge-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+.btn-edit {
+    color: #374151;
+}
+
+.btn-edit:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.btn-delete {
+    color: #6b7280;
+}
+
+.btn-delete:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header-content {
+        gap: 12px;
+    }
+
+    .page-icon {
+        font-size: 32px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .page-description {
+        font-size: 14px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+    }
+
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .stat-icon i {
+        font-size: 28px;
+    }
+
+    .add-branch-section {
+        padding: 20px;
+        border-left: none;
+        border-top: 4px solid #0891b2;
+    }
+
+    .section-header h2 {
+        font-size: 18px;
+    }
+
+    .branches-list-section {
+        border-left: none;
+        border-top: 4px solid #0891b2;
+    }
+
+    .list-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .list-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .search-section {
+        padding: 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .btn-search {
+        width: 100%;
+    }
+
+    .data-table thead th,
+    .data-table tbody td {
+        padding: 12px 16px;
+    }
+
+    .data-table thead th {
+        font-size: 11px;
+    }
+
+    .data-table tbody td {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-branch-section,
+    .list-header,
+    .search-section {
+        padding: 16px;
+    }
+
+    .page-icon {
+        font-size: 28px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .section-header i {
+        font-size: 20px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .data-table thead th,
+    .data-table tbody td {
+        padding: 10px 12px;
+    }
+
+    .btn-add {
+        width: 100%;
+    }
+
+    .action-buttons {
+        gap: 4px;
+    }
+
+    .btn-action {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+}

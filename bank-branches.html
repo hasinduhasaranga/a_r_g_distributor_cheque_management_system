@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Branches Management - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/bank-branches.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span>A R G Distributor pvt LTD</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="chequeOpsToggle">
+                    <i class="nav-icon fas fa-file-invoice"></i>
+                    <span class="nav-text">Cheque Operations</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="chequeOpsSubmenu">
+                    <a href="in-cheques.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-down"></i>
+                        <span class="submenu-text">IN Cheques</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-up"></i>
+                        <span class="submenu-text">OUT Cheques</span>
+                    </a>
+                    <a href="add-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-plus"></i>
+                        <span class="submenu-text">Add Cheque</span>
+                    </a>
+                    <a href="print-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-print"></i>
+                        <span class="submenu-text">Print Cheque</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="scheduleToggle">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <span class="nav-text">Schedule & Tracking</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="scheduleSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-calendar-day"></i>
+                        <span class="submenu-text">Daily Schedule</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-receipt"></i>
+                        <span class="submenu-text">Expected Receipts</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-users"></i>
+                        <span class="submenu-text">Third Party Transfers</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-bar"></i>
+                    <span class="nav-text">Reports</span>
+                </a>
+            </div>
+            <div class="nav-item expanded">
+                <a href="#" class="nav-link" id="bankToggle">
+                    <i class="nav-icon fas fa-university"></i>
+                    <span class="nav-text">Bank Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="bankSubmenu">
+                    <a href="banks.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-building"></i>
+                        <span class="submenu-text">Banks</span>
+                    </a>
+                    <a href="bank-branches.html" class="submenu-link active">
+                        <i class="submenu-icon fas fa-code-branch"></i>
+                        <span class="submenu-text">Bank Branches</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <span class="nav-text">User Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-circle"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Admin</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header-section">
+                <div class="page-header-content">
+                    <i class="fas fa-code-branch page-icon"></i>
+                    <div>
+                        <h1 class="page-title">Bank Branches Management</h1>
+                        <p class="page-description">Manage bank branches for cheque processing</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-value">2729</div>
+                        <div class="stat-label">Total Branches</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-value">2729</div>
+                        <div class="stat-label">Active Branches</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-value">26</div>
+                        <div class="stat-label">Financial Institutes</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Branch Section -->
+            <div class="add-branch-section">
+                <div class="section-header">
+                    <i class="fas fa-plus-circle"></i>
+                    <h2>Add New Bank Branch</h2>
+                </div>
+
+                <form id="addBranchForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-university"></i>
+                                Financial Institute Name <span class="required">*</span>
+                            </label>
+                            <select class="form-control" id="bankSelect" required>
+                                <option value="">Select a bank...</option>
+                                <option value="Amana Bank Ltd">Amana Bank Ltd</option>
+                                <option value="Bank of Ceylon">Bank of Ceylon</option>
+                                <option value="Citi Bank">Citi Bank</option>
+                                <option value="Commercial Bank of Ceylon">Commercial Bank of Ceylon</option>
+                                <option value="Deutsche Bank">Deutsche Bank</option>
+                                <option value="DFCC Vardhana Bank Ltd">DFCC Vardhana Bank Ltd</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-hashtag"></i>
+                                Branch Code <span class="required">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="branchCode" placeholder="e.g., 001" maxlength="3" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Branch Name <span class="required">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="branchName" placeholder="e.g., Negombo Branch" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-add">
+                        <i class="fas fa-plus"></i>
+                        Add Branch
+                    </button>
+                </form>
+            </div>
+
+            <!-- Branches List Section -->
+            <div class="branches-list-section">
+                <div class="list-header">
+                    <div class="list-title">
+                        <i class="fas fa-list"></i>
+                        <h2>Bank Branches</h2>
+                    </div>
+                    <div class="list-controls">
+                        <label class="show-label">
+                            <i class="fas fa-filter"></i>
+                            Show:
+                        </label>
+                        <select class="show-select" id="showEntries">
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <div class="search-header">
+                        <i class="fas fa-search"></i>
+                        <h3>Search Branches</h3>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search by institute name, branch code, or branch name...">
+                        <button class="btn-search" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>FINANCIAL INSTITUTE</th>
+                                <th>BRANCH CODE</th>
+                                <th>BRANCH NAME</th>
+                                <th>STATUS</th>
+                                <th>CREATED</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="branchesTableBody">
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">001</span></td>
+                                <td>Head Office</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">002</span></td>
+                                <td>Pettah</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">003</span></td>
+                                <td>Kandy</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">004</span></td>
+                                <td>Kattankudy</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">005</span></td>
+                                <td>Ladies</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amana Bank Ltd</td>
+                                <td><span class="branch-code">006</span></td>
+                                <td>Kalmunai</td>
+                                <td><span class="badge badge-active">ACTIVE</span></td>
+                                <td>06-10-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Submenu Toggle
+        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
+        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+
+        const scheduleToggle = document.getElementById('scheduleToggle');
+        const scheduleItem = scheduleToggle.closest('.nav-item');
+
+        const bankToggle = document.getElementById('bankToggle');
+        const bankItem = bankToggle.closest('.nav-item');
+
+        chequeOpsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            chequeOpsItem.classList.toggle('expanded');
+        });
+
+        scheduleToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            scheduleItem.classList.toggle('expanded');
+        });
+
+        bankToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            bankItem.classList.toggle('expanded');
+        });
+
+        // Branch code validation - only allow 3 digits
+        const branchCodeInput = document.getElementById('branchCode');
+        branchCodeInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);
+        });
+
+        // Form submission
+        const form = document.getElementById('addBranchForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const bank = document.getElementById('bankSelect').value;
+            const branchCode = document.getElementById('branchCode').value;
+            const branchName = document.getElementById('branchName').value;
+
+            if (!bank || !branchCode || !branchName) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            if (branchCode.length !== 3) {
+                alert('Branch code must be exactly 3 digits');
+                return;
+            }
+
+            // Add new branch to table
+            const tableBody = document.getElementById('branchesTableBody');
+            const newRow = document.createElement('tr');
+            const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            
+            newRow.innerHTML = `
+                <td>${bank}</td>
+                <td><span class="branch-code">${branchCode}</span></td>
+                <td>${branchName}</td>
+                <td><span class="badge badge-active">ACTIVE</span></td>
+                <td>${today}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn-action btn-edit" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-action btn-delete" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            tableBody.insertBefore(newRow, tableBody.firstChild);
+            
+            // Update stats
+            const totalBranches = document.querySelector('.stat-card:nth-child(1) .stat-value');
+            const activeBranches = document.querySelector('.stat-card:nth-child(2) .stat-value');
+            totalBranches.textContent = parseInt(totalBranches.textContent) + 1;
+            activeBranches.textContent = parseInt(activeBranches.textContent) + 1;
+            
+            // Reset form
+            form.reset();
+            
+            // Show success message
+            alert('Branch added successfully!');
+            
+            // Attach event listeners to new buttons
+            attachActionListeners();
+        });
+
+        // Search functionality
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const rows = document.querySelectorAll('#branchesTableBody tr');
+
+            rows.forEach(row => {
+                const institute = row.cells[0].textContent.toLowerCase();
+                const code = row.cells[1].textContent.toLowerCase();
+                const name = row.cells[2].textContent.toLowerCase();
+
+                if (institute.includes(searchTerm) || code.includes(searchTerm) || name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Action button handlers
+        function attachActionListeners() {
+            document.querySelectorAll('.btn-edit').forEach(btn => {
+                btn.onclick = function() {
+                    const row = this.closest('tr');
+                    const institute = row.cells[0].textContent;
+                    const code = row.querySelector('.branch-code').textContent;
+                    const name = row.cells[2].textContent;
+                    
+                    const newName = prompt('Edit Branch Name:', name);
+                    if (newName && newName.trim()) {
+                        row.cells[2].textContent = newName.trim();
+                        alert('Branch updated successfully!');
+                    }
+                };
+            });
+
+            document.querySelectorAll('.btn-delete').forEach(btn => {
+                btn.onclick = function() {
+                    const row = this.closest('tr');
+                    const name = row.cells[2].textContent;
+                    
+                    if (confirm(`Are you sure you want to delete ${name} branch?`)) {
+                        row.remove();
+                        
+                        // Update stats
+                        const totalBranches = document.querySelector('.stat-card:nth-child(1) .stat-value');
+                        const activeBranches = document.querySelector('.stat-card:nth-child(2) .stat-value');
+                        totalBranches.textContent = parseInt(totalBranches.textContent) - 1;
+                        activeBranches.textContent = parseInt(activeBranches.textContent) - 1;
+                        
+                        alert('Branch deleted successfully!');
+                    }
+                };
+            });
+        }
+
+        // Initial attachment of action listeners
+        attachActionListeners();
+
+        console.log('Bank Branches page loaded successfully!');
+    </script>
+</body>
+
+</html>
