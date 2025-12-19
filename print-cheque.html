@@ -16,9 +16,9 @@
 
 <body>
     <!-- Sidebar -->
-   <div id="sidebar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
 
-<script src="js/common.js"></script>
+    <script src="js/common.js"></script>
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <!-- Header -->
@@ -81,7 +81,8 @@
                                 <i class="fas fa-user"></i>
                                 Payee Name <span class="required">*</span>
                             </label>
-                            <input type="text" class="form-control" id="payeeName" placeholder="Enter payee name" required>
+                            <input type="text" class="form-control" id="payeeName" placeholder="Enter payee name"
+                                required>
                         </div>
 
                         <div class="form-group">
@@ -89,7 +90,8 @@
                                 <i class="fas fa-money-bill"></i>
                                 Amount (LKR) <span class="required">*</span>
                             </label>
-                            <input type="number" class="form-control" id="amount" placeholder="0.00" step="0.01" required>
+                            <input type="number" class="form-control" id="amount" placeholder="0.00" step="0.01"
+                                required>
                         </div>
                     </div>
 
@@ -149,6 +151,76 @@
         </div>
     </div>
 
+    <!-- Cheque Preview Modal -->
+    <div class="modal-overlay" id="chequePreviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-eye"></i> Cheque Preview</h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="virtual-cheque" id="virtualCheque">
+                    <!-- Crossing -->
+                    <div class="crossing" id="chequeCrossing">
+                        <div class="crossing-text">Account Payee Only</div>
+                    </div>
+
+                    <!-- Bank Info -->
+                    <div class="cheque-bank-info">
+                        Commercial Bank of Ceylon PLC
+                    </div>
+
+                    <!-- Date -->
+                    <div class="cheque-date" id="chequePreviewDate">
+                        <!-- Date Chars will go here -->
+                        D D M M Y Y Y Y
+                    </div>
+
+                    <!-- Payee -->
+                    <div class="cheque-payee-row">
+                        <span class="cheque-payee-label">Pay</span>
+                        <div class="cheque-payee-name" id="chequePreviewPayee">
+                            <!-- Payee Name -->
+                        </div>
+                    </div>
+
+                    <!-- Amount Words -->
+                    <div class="cheque-amount-words-row">
+                        <span class="cheque-amount-words-label">Rupees</span>
+                        <div class="cheque-amount-words" id="chequePreviewWords">
+                            <!-- Amount in words -->
+                        </div>
+                    </div>
+
+                    <!-- Amount Figures -->
+                    <div class="cheque-amount-figures-box">
+                        <span class="cheque-currency">LKR</span>
+                        <div class="cheque-amount-figures" id="chequePreviewAmount">
+                            <!-- Format: **50,000.00 -->
+                        </div>
+                    </div>
+
+                    <!-- Footer / Signature -->
+                    <div class="cheque-signature-area">
+                        Authorized Signatory
+                    </div>
+
+                    <div class="cheque-footer-micr">
+                        001234: 00056789: 1234
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal-cancel" id="cancelPrintBtn">Cancel</button>
+                <button class="btn-print-confirm" id="confirmPrintBtn">
+                    <i class="fas fa-print"></i> Confirm & Print
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sidebar Toggle
         const sidebarToggle = document.getElementById('sidebarToggle');
@@ -157,7 +229,7 @@
 
         sidebarToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             if (window.innerWidth <= 768) {
                 sidebar.classList.toggle('show');
             } else {
@@ -180,32 +252,35 @@
             }
         });
 
-        // Submenu Toggle
+        // Submenu Toggle - keeping generic logic for consistency
         const chequeOpsToggle = document.getElementById('chequeOpsToggle');
-        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+        if (chequeOpsToggle) {
+            const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+            chequeOpsToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                chequeOpsItem.classList.toggle('expanded');
+            });
+        }
 
         const scheduleToggle = document.getElementById('scheduleToggle');
-        const scheduleItem = scheduleToggle.closest('.nav-item');
+        if (scheduleToggle) {
+            const scheduleItem = scheduleToggle.closest('.nav-item');
+            scheduleToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                scheduleItem.classList.toggle('expanded');
+            });
+        }
 
         const bankToggle = document.getElementById('bankToggle');
-        const bankItem = bankToggle.closest('.nav-item');
+        if (bankToggle) {
+            const bankItem = bankToggle.closest('.nav-item');
+            bankToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                bankItem.classList.toggle('expanded');
+            });
+        }
 
-        chequeOpsToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            chequeOpsItem.classList.toggle('expanded');
-        });
-
-        scheduleToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            scheduleItem.classList.toggle('expanded');
-        });
-
-        bankToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            bankItem.classList.toggle('expanded');
-        });
-
-        // Number to Words Conversion
+        // Number to Words Conversion (Verified)
         function numberToWords(num) {
             const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
             const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
@@ -247,17 +322,34 @@
             return word.trim();
         }
 
-        // Form submission
+        // Modal Logic
+        const modal = document.getElementById('chequePreviewModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelPrintBtn = document.getElementById('cancelPrintBtn');
+        const confirmPrintBtn = document.getElementById('confirmPrintBtn');
+
+        function hideModal() {
+            modal.classList.remove('show');
+        }
+
+        closeModalBtn.addEventListener('click', hideModal);
+        cancelPrintBtn.addEventListener('click', hideModal);
+
+        confirmPrintBtn.addEventListener('click', function () {
+            window.print();
+        });
+
+        // Form submission & Preview Generation
         const form = document.getElementById('printChequeForm');
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const chequeDate = document.getElementById('chequeDate').value;
             const payeeName = document.getElementById('payeeName').value;
             const amount = parseFloat(document.getElementById('amount').value);
             const crossCheque = document.getElementById('crossCheque').checked;
             const lineGap = document.getElementById('lineGap').value;
-            const wordsPerLine = document.getElementById('wordsPerLine').value;
+            const wordsPerLine = document.getElementById('wordsPerLine').value; // Can use for wrapping logic if needed
             const fontSize = document.getElementById('fontSize').value;
 
             if (!chequeDate || !payeeName || !amount) {
@@ -265,26 +357,60 @@
                 return;
             }
 
-            const amountInWords = numberToWords(Math.floor(amount)) + ' Rupees';
-            
-            const chequeData = {
-                date: chequeDate,
-                payee: payeeName,
-                amount: amount,
-                amountWords: amountInWords,
-                crossCheque: crossCheque,
-                lineGap: lineGap,
-                wordsPerLine: wordsPerLine,
-                fontSize: fontSize
-            };
+            // Convert Amount to Words
+            const integerPart = Math.floor(amount);
+            const decimalPart = Math.round((amount - integerPart) * 100);
 
-            console.log('Cheque Preview Data:', chequeData);
-            alert('Preview functionality will be implemented here.\n\nCheque Details:\nPayee: ' + payeeName + '\nAmount: LKR ' + amount.toFixed(2) + '\nIn Words: ' + amountInWords);
+            let amountInWords = numberToWords(integerPart);
+            if (decimalPart > 0) {
+                amountInWords += ' and ' + decimalPart + '/100';
+            }
+            amountInWords += ' Only';
+
+            // Populate Virtual Cheque
+            // Date Format: 2025-12-14 -> 1 4 1 2 2 0 2 5 (with spaces)
+            if (chequeDate) {
+                const d = new Date(chequeDate);
+                const day = String(d.getDate()).padStart(2, '0');
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const year = d.getFullYear();
+
+                // Construct Date Box string
+                let dateStr = `${day.charAt(0)} ${day.charAt(1)} ${month.charAt(0)} ${month.charAt(1)} ${String(year).charAt(0)} ${String(year).charAt(1)} ${String(year).charAt(2)} ${String(year).charAt(3)}`;
+                document.getElementById('chequePreviewDate').textContent = dateStr;
+            }
+
+            document.getElementById('chequePreviewPayee').textContent = payeeName;
+            document.getElementById('chequePreviewWords').textContent = amountInWords;
+            document.getElementById('chequePreviewAmount').textContent = '**' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Apply Crossing
+            const crossingEl = document.getElementById('chequeCrossing');
+            if (crossCheque) {
+                crossingEl.classList.add('show');
+            } else {
+                crossingEl.classList.remove('show');
+            }
+
+            // Apply Styles
+            const wordsEl = document.getElementById('chequePreviewWords');
+            const payeeEl = document.getElementById('chequePreviewPayee');
+
+            // Dynamic Font Size update
+            const size = fontSize + 'px';
+            wordsEl.style.fontSize = size;
+            payeeEl.style.fontSize = size;
+
+            // Dynamic Line Gap (using css var or direct style)
+            wordsEl.style.lineHeight = (parseInt(lineGap) + parseInt(fontSize)) + 'px'; // approx
+
+            // Show Modal
+            modal.classList.add('show');
         });
 
-        // Clear form
+        // Clear form logic
         const clearBtn = document.getElementById('clearFormBtn');
-        clearBtn.addEventListener('click', function() {
+        clearBtn.addEventListener('click', function () {
             if (confirm('Are you sure you want to clear the form?')) {
                 form.reset();
                 document.getElementById('lineGap').value = '12';
