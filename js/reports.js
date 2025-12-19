@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Status Distribution Chart
     const ctx = document.getElementById('statusChart').getContext('2d');
     new Chart(ctx, {
@@ -49,14 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td style="color:#10b981; font-weight:600">LKR ${row.amt}</td><td>${row.pctTotal}</td><td>LKR ${row.avg}</td>
             </tr>`;
     });
-  // Modal Logic
-const modal = document.getElementById("returnedPayersModal");
-const btn = document.getElementById("viewReturnedPayers");
-const span = document.getElementsByClassName("close-modal")[0];
+    // Modal Logic
+    const modal = document.getElementById("returnedPayersModal");
+    const btn = document.getElementById("viewReturnedPayers");
+    const span = document.getElementsByClassName("close-modal")[0];
 
-btn.onclick = function() { modal.style.display = "block"; }
-span.onclick = function() { modal.style.display = "none"; }
-window.onclick = function(event) {
-    if (event.target == modal) { modal.style.display = "none"; }
-}
+    btn.onclick = function () { modal.style.display = "block"; }
+    span.onclick = function () { modal.style.display = "none"; }
+    window.onclick = function (event) {
+        if (event.target == modal) { modal.style.display = "none"; }
+    }
+
+    // Print PDF functionality
+    const printBtn = document.querySelector('.btn-download-report');
+    printBtn.addEventListener('click', function () {
+        window.print();
+    });
 });

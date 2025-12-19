@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,14 @@
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/in-cheques.css">
     <link rel="stylesheet" href="css/reports.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
 </head>
+
 <body>
     <!-- Sidebar -->
-   <div id="sidebar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
 
-<script src="js/common.js"></script>
+    <script src="js/common.js"></script>
 
     <div class="main-content" id="mainContent">
         <header class="header">
@@ -65,37 +68,55 @@
             <div class="stats-grid">
                 <div class="stat-card cyan">
                     <div class="stat-header">
-                        <div><div class="stat-number">45</div><div class="stat-label">TOTAL CHEQUES</div></div>
+                        <div>
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">TOTAL CHEQUES</div>
+                        </div>
                         <i class="fas fa-file-alt stat-icon-faint"></i>
                     </div>
                 </div>
                 <div class="stat-card green">
                     <div class="stat-header">
-                        <div><div class="stat-number">LKR 6,226,706.00</div><div class="stat-label">TOTAL AMOUNT</div></div>
+                        <div>
+                            <div class="stat-number">LKR 6,226,706.00</div>
+                            <div class="stat-label">TOTAL AMOUNT</div>
+                        </div>
                         <i class="fas fa-money-bill-wave stat-icon-faint"></i>
                     </div>
                 </div>
                 <div class="stat-card orange">
                     <div class="stat-header">
-                        <div><div class="stat-number">LKR 138,371.24</div><div class="stat-label">AVERAGE AMOUNT</div></div>
+                        <div>
+                            <div class="stat-number">LKR 138,371.24</div>
+                            <div class="stat-label">AVERAGE AMOUNT</div>
+                        </div>
                         <i class="fas fa-calculator stat-icon-faint"></i>
                     </div>
                 </div>
                 <div class="stat-card red">
                     <div class="stat-header">
-                        <div><div class="stat-number">3</div><div class="stat-label">IN CHEQUE RETURNED</div></div>
+                        <div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">IN CHEQUE RETURNED</div>
+                        </div>
                         <i class="fas fa-undo stat-icon-faint"></i>
                     </div>
                 </div>
                 <div class="stat-card red">
                     <div class="stat-header">
-                        <div><div class="stat-number">LKR 59,000.00</div><div class="stat-label">RETURNED AMOUNT</div></div>
+                        <div>
+                            <div class="stat-number">LKR 59,000.00</div>
+                            <div class="stat-label">RETURNED AMOUNT</div>
+                        </div>
                         <i class="fas fa-hand-holding-usd stat-icon-faint"></i>
                     </div>
                 </div>
                 <div class="stat-card purple clickable-stat" id="viewReturnedPayers">
                     <div class="stat-header">
-                        <div><div class="stat-number">2</div><div class="stat-label">RETURNING PAYERS COUNT</div></div>
+                        <div>
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">RETURNING PAYERS COUNT</div>
+                        </div>
                         <i class="fas fa-users-slash stat-icon-faint"></i>
                     </div>
                 </div>
@@ -103,33 +124,48 @@
 
             <div class="report-grid-2">
                 <div class="card chart-card">
-                    <div class="card-header"><h4>Status Distribution</h4><p>Breakdown by cheque status</p></div>
+                    <div class="card-header">
+                        <h4>Status Distribution</h4>
+                        <p>Breakdown by cheque status</p>
+                    </div>
                     <div class="chart-container"><canvas id="statusChart"></canvas></div>
                 </div>
                 <div class="card-split">
                     <div class="card breakdown-card">
-                        <div class="card-header"><h4>Type Breakdown</h4></div>
+                        <div class="card-header">
+                            <h4>Type Breakdown</h4>
+                        </div>
                         <div class="breakdown-list" id="typeBreakdown"></div>
                     </div>
                     <div class="card breakdown-card">
-                        <div class="card-header"><h4>Bank Breakdown</h4></div>
+                        <div class="card-header">
+                            <h4>Bank Breakdown</h4>
+                        </div>
                         <div class="breakdown-list" id="bankBreakdown"></div>
                     </div>
                 </div>
             </div>
 
             <div class="table-section card">
-                <div class="card-header"><h4>Detailed Status Breakdown</h4></div>
+                <div class="card-header">
+                    <h4>Detailed Status Breakdown</h4>
+                </div>
                 <div class="table-container">
                     <table class="data-table" id="statusTable">
                         <thead>
                             <tr>
-                                <th>STATUS</th><th>COUNT</th><th>PERCENTAGE</th>
-                                <th>TOTAL AMOUNT</th><th>PERCENTAGE OF TOTAL</th><th>AVERAGE AMOUNT</th>
+                                <th>STATUS</th>
+                                <th>COUNT</th>
+                                <th>PERCENTAGE</th>
+                                <th>TOTAL AMOUNT</th>
+                                <th>PERCENTAGE OF TOTAL</th>
+                                <th>AVERAGE AMOUNT</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
-                        <tfoot><tr id="tableTotalRow"></tr></tfoot>
+                        <tfoot>
+                            <tr id="tableTotalRow"></tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -149,10 +185,20 @@
                             <div class="payer-total">Total Amount: <span class="amt-red">LKR 23,000</span></div>
                             <table class="modal-table">
                                 <thead>
-                                    <tr><th>CHEQUE #</th><th>DATE</th><th>BANK</th><th>AMOUNT</th></tr>
+                                    <tr>
+                                        <th>CHEQUE #</th>
+                                        <th>DATE</th>
+                                        <th>BANK</th>
+                                        <th>AMOUNT</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>121231</td><td>05/10/2025</td><td>Commercial Bank of Ceylon</td><td>LKR 23000.00</td></tr>
+                                    <tr>
+                                        <td>121231</td>
+                                        <td>05/10/2025</td>
+                                        <td>Commercial Bank of Ceylon</td>
+                                        <td>LKR 23000.00</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -164,4 +210,5 @@
     </div>
     <script src="js/reports.js"></script>
 </body>
+
 </html>

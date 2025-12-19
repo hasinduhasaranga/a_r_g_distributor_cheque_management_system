@@ -12,13 +12,14 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/schedule-tracking.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
 </head>
 
 <body>
     <!-- Sidebar -->
-   <div id="sidebar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
 
-<script src="js/common.js"></script>
+    <script src="js/common.js"></script>
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
@@ -181,7 +182,7 @@
 
         sidebarToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             if (window.innerWidth <= 768) {
                 sidebar.classList.toggle('show');
             } else {
@@ -206,30 +207,7 @@
             }
         });
 
-        // Submenu Toggle
-        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
-        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
 
-        const scheduleToggle = document.getElementById('scheduleToggle');
-        const scheduleItem = scheduleToggle.closest('.nav-item');
-
-        const bankToggle = document.getElementById('bankToggle');
-        const bankItem = bankToggle.closest('.nav-item');
-
-        chequeOpsToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            chequeOpsItem.classList.toggle('expanded');
-        });
-
-        scheduleToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            scheduleItem.classList.toggle('expanded');
-        });
-
-        bankToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            bankItem.classList.toggle('expanded');
-        });
 
         // Generate Next 7 Days Overview
         const daysRow = document.getElementById('daysRow');
@@ -239,26 +217,26 @@
 
         function generateDayCards() {
             daysRow.innerHTML = '';
-            
+
             for (let i = 0; i < 7; i++) {
                 const date = new Date(today);
                 date.setDate(today.getDate() + i);
-                
+
                 const dayIndex = date.getDay();
                 const dayName = dayNames[dayIndex];
                 const dayDate = date.getDate();
-                
+
                 // Check if this is today
                 const isToday = i === 0;
-                
+
                 const dayCard = document.createElement('div');
                 dayCard.className = `day-card ${isToday ? 'active' : ''}`;
                 dayCard.dataset.dayIndex = i;
-                
+
                 // Random data for demo
                 const numCheques = Math.floor(Math.random() * 10) + 1;
                 const amount = (Math.random() * 500000 + 50000).toFixed(2);
-                
+
                 dayCard.innerHTML = `
                     <div class="day-name">${dayName}</div>
                     <div class="day-date">${dayDate}</div>
@@ -269,40 +247,44 @@
                         </div>
                         <div class="day-stat-item">
                             <i class="fas fa-money-bill-wave day-icon"></i>
-                            <span class="day-stat-value">LKR ${parseFloat(amount).toLocaleString('en-US', {minimumFractionDigits: 2})}</span>
+                            <span class="day-stat-value">LKR ${parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
                         </div>
                     </div>
                 `;
-                
+
                 dayCard.addEventListener('click', () => {
                     // Remove active class from all cards
                     document.querySelectorAll('.day-card').forEach(card => {
                         card.classList.remove('active');
                     });
-                    
+
                     // Add active class to clicked card
                     dayCard.classList.add('active');
                     activeDayIndex = i;
-                    
+
                     // Update table title
                     const selectedDate = new Date(today);
                     selectedDate.setDate(today.getDate() + i);
                     const dateStr = selectedDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
                     document.getElementById('tableDateTitle').textContent = `Cheques for ${dateStr}`;
                 });
-                
+
                 daysRow.appendChild(dayCard);
             }
         }
 
         generateDayCards();
 
+        // Print Functionality
+        const printBtn = document.querySelector('.btn-print-export');
+        if (printBtn) {
+            printBtn.addEventListener('click', () => {
+                window.print();
+            });
+        }
+
         console.log('Daily Schedule page loaded successfully!');
     </script>
 </body>
 
 </html>
-
-
-
-

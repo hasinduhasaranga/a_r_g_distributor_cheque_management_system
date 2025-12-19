@@ -1,0 +1,120 @@
+@media print {
+    /* Hide sidebar and non-essential navigation */
+    .sidebar, 
+    #sidebar-placeholder, 
+    .header, 
+    .filter-card,
+    .btn-download-report,
+    #sidebarToggle,
+    .btn-primary,
+    .btn-dark,
+    .btn-outline,
+    .modal {
+        display: none !important;
+    }
+
+    /* Reset layout for print */
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .report-page {
+        background-color: white !important;
+        padding-bottom: 0;
+    }
+
+    .page-header-section {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .page-title {
+        font-size: 24px;
+        color: black !important;
+    }
+
+    .page-description {
+        color: #555;
+    }
+
+    /* Adjust grids for print */
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        border: 1px solid #ddd;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+
+    .stat-icon-faint {
+        display: none;
+    }
+
+    .report-grid-2 {
+        display: block !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        margin-bottom: 20px;
+        break-inside: avoid;
+    }
+
+    .chart-container {
+        height: 300px !important;
+        width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    /* Ensure table prints nicely */
+    .table-section {
+        margin-top: 20px;
+    }
+
+    .table-container {
+        overflow: visible;
+    }
+
+    .data-table {
+        font-size: 10pt;
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+
+    .data-table th, .data-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+    .badge {
+        border: 1px solid #ccc;
+        background: none !important;
+        color: black !important;
+    }
+
+    /* Daily Schedule Specific */
+    .days-overview,
+    .btn-print-export,
+    .btn-action {
+        display: none !important;
+    }
+
+    .schedule-table-section {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .schedule-table-header {
+        border-bottom: 2px solid #000 !important;
+        padding-left: 0 !important;
+    }
+}
