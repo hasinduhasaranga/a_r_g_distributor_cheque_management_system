@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/user-management.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <script src="js/common.js"></script>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Admin</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <span class="title-accent"></span>
+                    User Management
+                </h1>
+                <p class="page-subtitle">Manage system users, roles, and access permissions</p>
+            </div>
+
+            <!-- KPI Stats Row -->
+            <div class="stats-grid-3">
+                <div class="stat-card cyan">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Total Users</div>
+                        </div>
+                        <div class="stat-icon-lg cyan">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Active Sessions</div>
+                        </div>
+                        <div class="stat-icon-lg green">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Role Distribution</div>
+                        </div>
+                        <div class="stat-icon-lg blue">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add User Form -->
+            <div class="form-card">
+                <h2 class="card-title">Register New System User</h2>
+                <form class="user-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" placeholder="Choose a username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Set a placeholder password">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Role</label>
+                        <select class="form-control">
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="operator">Operator</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width" style="text-align: right;">
+                        <button type="button" class="btn-primary">
+                            <i class="fas fa-plus"></i> Create User
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- User List Table -->
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="card-title" style="margin: 0; border: none;">System Users</h2>
+                    <div class="table-actions">
+                        <div class="show-entries">
+                            <input type="text" placeholder="Search users..." class="form-control"
+                                style="padding: 0.5rem;">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;"></th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Last Login</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="profile-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </td>
+                                <td>Admin User</td>
+                                <td>admin</td>
+                                <td>ADMIN</td>
+                                <td>Today, 10:45 AM</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <button class="btn-action btn-edit" title="Edit"><i
+                                            class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="profile-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </td>
+                                <td>John Doe</td>
+                                <td>johnd</td>
+                                <td>MANAGER</td>
+                                <td>Yesterday, 4:20 PM</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <button class="btn-action btn-edit" title="Edit"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-deactivate" title="Deactivate"><i
+                                            class="fas fa-ban"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="profile-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </td>
+                                <td>Sarah Smith</td>
+                                <td>sarahs</td>
+                                <td>OPERATOR</td>
+                                <td>15 Dec 2025</td>
+                                <td><span class="status-badge status-suspended">Suspended</span></td>
+                                <td>
+                                    <button class="btn-action btn-edit" title="Edit"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="btn-action btn-deactivate" title="Reactivate"><i
+                                            class="fas fa-check"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("User Management page loaded.");
+        // Basic sidebar toggle logic for mobile (mirrored from others just in case common.js doesn't catch it immediately or if inline needed)
+        // But referencing common.js is cleaner. I will leave the common.js to handle sidebar as per previous fix advice.
+    </script>
+</body>
+
+</html>
