@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expected Receipts - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/schedule-tracking.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span>A R G Distributor pvt LTD</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="chequeOpsToggle">
+                    <i class="nav-icon fas fa-file-invoice"></i>
+                    <span class="nav-text">Cheque Operations</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="chequeOpsSubmenu">
+                    <a href="in-cheques.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-down"></i>
+                        <span class="submenu-text">IN Cheques</span>
+                    </a>
+                    <a href="out-cheques.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-arrow-up"></i>
+                        <span class="submenu-text">OUT Cheques</span>
+                    </a>
+                    <a href="add-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-plus"></i>
+                        <span class="submenu-text">Add Cheque</span>
+                    </a>
+                    <a href="print-cheque.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-print"></i>
+                        <span class="submenu-text">Print Cheque</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item expanded">
+                <a href="#" class="nav-link" id="scheduleToggle">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <span class="nav-text">Schedule & Tracking</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="scheduleSubmenu">
+                    <a href="daily-schedule.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-calendar-day"></i>
+                        <span class="submenu-text">Daily Schedule</span>
+                    </a>
+                    <a href="expected-receipts.html" class="submenu-link active">
+                        <i class="submenu-icon fas fa-receipt"></i>
+                        <span class="submenu-text">Expected Receipts</span>
+                    </a>
+                    <a href="third-party-transfers.html" class="submenu-link">
+                        <i class="submenu-icon fas fa-users"></i>
+                        <span class="submenu-text">Third Party Transfers</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-bar"></i>
+                    <span class="nav-text">Reports</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="bankToggle">
+                    <i class="nav-icon fas fa-university"></i>
+                    <span class="nav-text">Bank Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+                <div class="submenu" id="bankSubmenu">
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-building"></i>
+                        <span class="submenu-text">Banks</span>
+                    </a>
+                    <a href="#" class="submenu-link">
+                        <i class="submenu-icon fas fa-code-branch"></i>
+                        <span class="submenu-text">Bank Branches</span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <span class="nav-text">User Management</span>
+                    <i class="nav-arrow fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-user-circle"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Admin</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Expected Receipts</h1>
+                <p class="page-subtitle">View expected cheque receipts by banking date</p>
+            </div>
+
+            <!-- Banking Date Picker -->
+            <div class="date-picker-card">
+                <h2 class="date-picker-title">Select Banking Date</h2>
+                <div class="date-picker-controls">
+                    <div class="date-input-wrapper">
+                        <label for="bankingDate">Date:</label>
+                        <input type="date" id="bankingDate" class="date-input" value="">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-view-expected" id="viewExpectedBtn">
+                            <i class="fas fa-eye"></i>
+                            View Expected
+                        </button>
+                        <button class="btn-today" id="todayBtn">
+                            <i class="fas fa-calendar-day"></i>
+                            Today
+                        </button>
+                        <button class="btn-nav-day" id="prevDayBtn">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous Day
+                        </button>
+                        <button class="btn-nav-day" id="nextDayBtn">
+                            Next Day
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid-3">
+                <div class="stat-card cyan">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">EXPECTED RECEIPTS</div>
+                            <div class="stat-amount">LKR 850,000.00</div>
+                        </div>
+                        <div class="stat-icon-lg cyan">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card blue">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">-</div>
+                            <div class="stat-label">TOTAL EXPECTED AMOUNT</div>
+                            <div class="stat-amount">LKR 850,000.00</div>
+                        </div>
+                        <div class="stat-icon-lg blue">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-number">-</div>
+                            <div class="stat-label">AVERAGE AMOUNT</div>
+                            <div class="stat-amount">LKR 106,250.00</div>
+                        </div>
+                        <div class="stat-icon-lg green">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h2 class="table-title">
+                        <span class="title-accent"></span>
+                        Expected Receipts List
+                    </h2>
+                    <div class="table-actions">
+                        <button class="btn-icon btn-filter">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                        <button class="btn-icon btn-download">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <div class="show-entries">
+                            <label>Show:</label>
+                            <select class="entries-select">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-col">
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>CHEQUE #</th>
+                                <th>BANK</th>
+                                <th>BRANCH</th>
+                                <th>AMOUNT</th>
+                                <th>PAYEE</th>
+                                <th>CHEQUE DATE</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>456789</td>
+                                <td>Commercial Bank of Ceylon</td>
+                                <td>118</td>
+                                <td>LKR 100,000.00</td>
+                                <td>Amal Perera</td>
+                                <td>15-12-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>789123</td>
+                                <td>Bank of Ceylon</td>
+                                <td>002</td>
+                                <td>LKR 150,000.00</td>
+                                <td>Saman Silva</td>
+                                <td>16-12-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-col">
+                                    <input type="checkbox">
+                                </td>
+                                <td>321654</td>
+                                <td>People's Bank</td>
+                                <td>045</td>
+                                <td>LKR 200,000.00</td>
+                                <td>Nimal Fernando</td>
+                                <td>17-12-2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Submenu Toggle
+        const chequeOpsToggle = document.getElementById('chequeOpsToggle');
+        const chequeOpsItem = chequeOpsToggle.closest('.nav-item');
+
+        const scheduleToggle = document.getElementById('scheduleToggle');
+        const scheduleItem = scheduleToggle.closest('.nav-item');
+
+        const bankToggle = document.getElementById('bankToggle');
+        const bankItem = bankToggle.closest('.nav-item');
+
+        chequeOpsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            chequeOpsItem.classList.toggle('expanded');
+        });
+
+        scheduleToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            scheduleItem.classList.toggle('expanded');
+        });
+
+        bankToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            bankItem.classList.toggle('expanded');
+        });
+
+        // Date Picker Functionality
+        const bankingDateInput = document.getElementById('bankingDate');
+        const todayBtn = document.getElementById('todayBtn');
+        const prevDayBtn = document.getElementById('prevDayBtn');
+        const nextDayBtn = document.getElementById('nextDayBtn');
+        const viewExpectedBtn = document.getElementById('viewExpectedBtn');
+
+        // Set today's date as default
+        const today = new Date();
+        const todayStr = today.toISOString().split('T')[0];
+        bankingDateInput.value = todayStr;
+
+        todayBtn.addEventListener('click', () => {
+            bankingDateInput.value = todayStr;
+            viewExpected();
+        });
+
+        prevDayBtn.addEventListener('click', () => {
+            const currentDate = new Date(bankingDateInput.value);
+            currentDate.setDate(currentDate.getDate() - 1);
+            bankingDateInput.value = currentDate.toISOString().split('T')[0];
+            viewExpected();
+        });
+
+        nextDayBtn.addEventListener('click', () => {
+            const currentDate = new Date(bankingDateInput.value);
+            currentDate.setDate(currentDate.getDate() + 1);
+            bankingDateInput.value = currentDate.toISOString().split('T')[0];
+            viewExpected();
+        });
+
+        viewExpectedBtn.addEventListener('click', viewExpected);
+        bankingDateInput.addEventListener('change', viewExpected);
+
+        function viewExpected() {
+            // This would typically fetch data from the server
+            console.log('Viewing expected receipts for:', bankingDateInput.value);
+        }
+
+        // Select All Checkbox
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+        selectAllCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        console.log('Expected Receipts page loaded successfully!');
+    </script>
+</body>
+
+</html>
+
