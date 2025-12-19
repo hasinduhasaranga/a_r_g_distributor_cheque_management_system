@@ -615,28 +615,46 @@
         min-width: 120px;
     }
 
+    /* Date Picker Controls Stacking */
     .date-picker-controls {
         flex-direction: column;
         align-items: stretch;
+        gap: 1.5rem;
     }
 
     .date-input-wrapper {
         width: 100%;
+        justify-content: space-between;
     }
 
     .date-input {
         flex: 1;
+        max-width: none;
     }
 
     .btn-group {
         width: 100%;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .btn-view-expected {
+        grid-column: 1 / -1; /* Full width on top */
     }
 
-    .schedule-table-header {
+    /* Table Responsive Styles */
+    .schedule-table-header,
+    .table-header {
         flex-direction: column;
         gap: 1rem;
-        align-items: flex-start;
+        align-items: stretch;
+    }
+
+    .table-actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .btn-print-export {
@@ -644,30 +662,22 @@
         justify-content: center;
     }
 
-    /* Table Responsive Styles */
-    .table-header {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-
-    .table-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .data-table {
-        font-size: 0.85rem;
-    }
-
-    .data-table th,
-    .data-table td {
-        padding: 0.75rem 0.5rem;
-    }
-
+    /* Horizontal Rolling Table */
     .table-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        border-right: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+    }
+
+    .data-table {
+        min-width: 700px; /* Force overflow */
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 1rem;
+        white-space: nowrap;
     }
 }
 
@@ -685,35 +695,18 @@
         padding: 1.5rem;
     }
 
-    /* Table Mobile Styles */
     .table-title {
         font-size: 1.25rem;
     }
 
-    .table-actions {
-        flex-wrap: wrap;
+    .btn-group {
+        grid-template-columns: 1fr; /* Stack buttons fully */
     }
 
     .show-entries {
         width: 100%;
         justify-content: space-between;
-    }
-
-    .data-table th,
-    .data-table td {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.8rem;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .btn-action {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
+        margin-top: 0.5rem;
     }
 }
 
