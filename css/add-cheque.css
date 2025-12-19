@@ -211,8 +211,8 @@ input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
     }
 
     .form-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr !important;
+        gap: 16px;
     }
 
     .form-actions {

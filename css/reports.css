@@ -244,3 +244,46 @@ select.form-control {
 .modal-table td { padding: 10px; border-top: 1px solid #f1f5f9; }
 
 .clickable-stat:hover { transform: scale(1.02); cursor: pointer; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .report-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .report-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal width */
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+
+    /* Stack filter actions */
+    .filter-actions {
+        flex-wrap: wrap;
+    }
+
+    .btn-primary, .btn-dark, .btn-outline {
+        flex: 1; /* Stretch buttons */
+        justify-content: center;
+    }
+
+    /* Ensure table in modal scrolls */
+    .payer-info-card {
+        overflow-x: auto;
+    }
+    
+    .modal-table {
+        min-width: 500px;
+    }
+}

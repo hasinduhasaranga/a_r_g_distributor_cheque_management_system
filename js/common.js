@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sidebarContainer = document.getElementById('sidebar-placeholder');
-    
+
     if (sidebarContainer) {
         fetch('components/sidebar.html')
             .then(response => response.text())
@@ -35,19 +35,48 @@ function initializeSidebar() {
         });
     });
 
-    // 3. Mobile Sidebar Toggle (Requires sidebarToggle button in Header)
+    // 3. Mobile Sidebar Toggle & Overlay
     const sidebarToggleBtn = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
 
     if (sidebarToggleBtn) {
-        sidebarToggleBtn.addEventListener('click', () => {
+        sidebarToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent immediate close
             if (window.innerWidth <= 768) {
                 sidebar.classList.toggle('show');
+                if (sidebarOverlay) sidebarOverlay.classList.toggle('show');
             } else {
                 sidebar.classList.toggle('collapsed');
                 if (mainContent) mainContent.classList.toggle('expanded');
             }
         });
     }
+
+    // Close sidebar when clicking overlay
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            sidebarOverlay.classList.remove('show');
+        });
+    }
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            if (sidebar) sidebar.classList.remove('show');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('show');
+        }
+    });
+
+    // Close on link click (mobile)
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                if (sidebar) sidebar.classList.remove('show');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('show');
+            }
+        });
+    });
 }

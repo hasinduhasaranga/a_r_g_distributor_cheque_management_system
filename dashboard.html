@@ -19,6 +19,7 @@
 <body>
     <!-- Sidebar -->
     <div id="sidebar-placeholder"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <script src="js/common.js"></script>
 
@@ -159,10 +160,10 @@
         const outChequeChart = new Chart(outCtx, {
             type: 'line',
             data: {
-                labels: Array.from({length: 30}, (_, i) => `Day ${i + 1}`),
+                labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
                 datasets: [{
                     label: 'OUT Cheque Value',
-                    data: Array.from({length: 30}, () => Math.floor(Math.random() * 500000) + 100000),
+                    data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 500000) + 100000),
                     borderColor: '#f59e0b',
                     backgroundColor: 'rgba(245, 158, 11, 0.1)',
                     borderWidth: 2,
@@ -181,7 +182,7 @@
                     },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return 'LKR ' + context.parsed.y.toLocaleString();
                             }
                         }
@@ -194,7 +195,7 @@
                             color: '#f3f4f6'
                         },
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return 'LKR ' + (value / 1000) + 'K';
                             }
                         }
@@ -260,7 +261,7 @@
 
         sidebarToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             // On mobile, toggle show class, on desktop toggle collapsed
             if (window.innerWidth <= 768) {
                 sidebar.classList.toggle('show');
