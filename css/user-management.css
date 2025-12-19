@@ -1,0 +1,254 @@
+/* User Management Page Styling */
+@import 'dashboard.css';
+
+/* 1. Global Color Integration & Overrides */
+:root {
+    /* Utilizing variables from dashboard.css */
+}
+
+/* 2. Page Title Styling */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-accent {
+    display: inline-block;
+    width: 4px;
+    height: 36px; /* Adjusted magnitude for 2.5rem text */
+    background: #17a2b8; /* Cyan accent */
+    border-radius: 2px;
+}
+
+/* 3. Stat Card Color Overrides (Ensuring they pop like dashboard) */
+.stat-card.cyan::before { background: #17a2b8; }
+.stat-card.green::before { background: #10b981; }
+.stat-card.blue::before { background: #2989d8; }
+
+.stat-icon-lg.cyan { color: #17a2b8; background: rgba(23, 162, 184, 0.1); opacity: 1; }
+.stat-icon-lg.green { color: #10b981; background: rgba(16, 185, 129, 0.1); opacity: 1; }
+.stat-icon-lg.blue { color: #2989d8; background: rgba(41, 137, 216, 0.1); opacity: 1; }
+
+
+/* 4. Form Styles */
+.form-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark-color);
+}
+
+.form-control {
+    padding: 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    transition: all 0.2s;
+    color: var(--dark-color);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #022527; /* Primary Teal */
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(2, 37, 39, 0.1);
+}
+
+/* 5. Button Styles */
+.btn-primary {
+    background: #022527; /* Dark Teal */
+    color: white;
+    border: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(2, 37, 39, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background: #033a3d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(2, 37, 39, 0.4);
+}
+
+/* 6. Table Styles */
+.table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 1.5rem 2rem;
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    background: #f8f9fa; /* Light Gray Header */
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gray-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    color: var(--dark-color);
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-color);
+    font-size: 1.2rem;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.status-active {
+    background: #e0f2fe; /* Matching .badge-received style, usually generic active is green or blue */
+    color: #0369a1;
+    /* Prompt asked for Green #10b981 for Success/Active */
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.status-suspended {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+/* Action Buttons */
+.btn-action {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-right: 0.5rem;
+}
+
+.btn-edit {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.btn-edit:hover {
+    background: #bae6fd;
+}
+
+.btn-deactivate {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.btn-deactivate:hover {
+    background: #fecaca;
+}
+
+/* Stats Grid Columns */
+.stats-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stats-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .stats-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .user-form {
+        grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    .table-card {
+        overflow-x: auto;
+    }
+}

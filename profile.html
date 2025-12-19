@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - ARG Distributor</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <script src="js/common.js"></script>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <span>A R G Distributor pvt LTD</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <span class="welcome-text">Welcome, Asanka</span>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <span class="title-accent"></span>
+                    My Profile
+                </h1>
+                <p class="page-subtitle">Manage your personal information and account settings</p>
+            </div>
+
+            <!-- Profile Header -->
+            <div class="profile-header-card">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h2>Asanka</h2>
+                    <span class="role-badge">System Admin</span>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab('personal')">Personal Information</button>
+                <button class="tab-btn" onclick="openTab('security')">Security Settings</button>
+                <button class="tab-btn" onclick="openTab('activity')">Activity Logs</button>
+            </div>
+
+            <!-- Tab Content: Personal Info -->
+            <div id="personal" class="tab-content active">
+                <div class="info-card">
+                    <div class="info-grid">
+                        <div class="info-group">
+                            <label>Full Name</label>
+                            <div class="info-value">Asanka Perera</div>
+                        </div>
+                        <div class="info-group">
+                            <label>Employee ID</label>
+                            <div class="info-value">EMP-001</div>
+                        </div>
+                        <div class="info-group">
+                            <label>Email Address</label>
+                            <div class="info-value">asanka@argdistributor.com</div>
+                        </div>
+                        <div class="info-group">
+                            <label>Phone Number</label>
+                            <div class="info-value">+94 77 123 4567</div>
+                        </div>
+                        <div class="info-group">
+                            <label>Department</label>
+                            <div class="info-value">IT / Administration</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content: Security -->
+            <div id="security" class="tab-content">
+                <div class="info-card">
+                    <form class="security-form">
+                        <h3 style="margin-top: 0; color: #022527; margin-bottom: 20px;">Change Password</h3>
+                        <div class="form-group">
+                            <label class="form-label">Current Password</label>
+                            <input type="password" class="form-input" placeholder="Enter current password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">New Password</label>
+                            <input type="password" class="form-input" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-input" placeholder="Confirm new password">
+                        </div>
+                        <button type="button" class="btn-primary">Update Password</button>
+
+                        <div class="toggle-switch-wrapper">
+                            <div class="toggle-label">
+                                <strong>Two-Factor Authentication</strong>
+                                <span>Enable 2FA for enhanced account security</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab Content: Activity Logs -->
+            <div id="activity" class="tab-content">
+                <div class="info-card" style="padding: 0; overflow: hidden;">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Action Type</th>
+                                <th>IP Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-10-16 08:30 AM</td>
+                                <td>Login Success</td>
+                                <td>192.168.1.10</td>
+                            </tr>
+                            <tr>
+                                <td>2025-10-15 04:15 PM</td>
+                                <td>Updated Cheque #123456</td>
+                                <td>192.168.1.10</td>
+                            </tr>
+                            <tr>
+                                <td>2025-10-15 09:00 AM</td>
+                                <td>Login Success</td>
+                                <td>192.168.1.12</td>
+                            </tr>
+                            <tr>
+                                <td>2025-10-14 05:30 PM</td>
+                                <td>Logout</td>
+                                <td>192.168.1.10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show clicked tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked button
+            // Find the button that calls this function with this argument, or use event.target
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(tabId)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

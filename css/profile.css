@@ -1,0 +1,351 @@
+/* Profile Page Styles */
+@import 'dashboard.css';
+
+:root {
+    /* Variables inherited from dashboard.css */
+}
+
+/* 1. Page Title & Accent */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-accent {
+    display: inline-block;
+    width: 4px;
+    height: 36px;
+    background: #17a2b8; /* Cyan accent */
+    border-radius: 2px;
+}
+
+/* 2. Profile Header Card */
+.profile-header-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--gray-color);
+}
+
+.profile-info h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.role-badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* 3. Tab Styling (Bottom Border Style) */
+.tabs-nav {
+    display: flex;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.tab-btn {
+    padding: 1rem 0.5rem;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-color);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: -2px; /* Pull down to cover line */
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Form Styling (Matching add-cheque specs) */
+.form-card, .info-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.info-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gray-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    transition: all 0.2s;
+    color: var(--dark-color);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #022527; /* Primary Teal */
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(2, 37, 39, 0.1);
+}
+
+/* 5. Button Styles */
+.btn-primary {
+    background: #022527; /* Dark Teal */
+    color: white;
+    border: none;
+    padding: 0.85rem 1.75rem; /* Match spec */
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(2, 37, 39, 0.3);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background: #033a3d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(2, 37, 39, 0.4);
+}
+
+/* Toggle Switch */
+.toggle-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.toggle-label strong {
+    display: block;
+    color: var(--dark-color);
+}
+
+.toggle-label span {
+    font-size: 0.85rem;
+    color: var(--gray-color);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--success-color); /* Green for success state */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Activity Log Table */
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activity-table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    color: var(--gray-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    letter-spacing: 0.05em;
+}
+
+.activity-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--dark-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .tabs-nav {
+        overflow-x: auto;
+        padding-bottom: 0; /* Keep border logic */
+    }
+    .tab-btn {
+        white-space: nowrap;
+    }
+}
+
+/* Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-header-card {
+    animation: slideUpFade 0.5s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+    animation: slideUpFade 0.4s ease-out;
+}
+
+.profile-avatar {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.1);
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #022527;
+    transition: width 0.3s ease;
+}
+
+.tab-btn:hover::after {
+    width: 100%;
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
